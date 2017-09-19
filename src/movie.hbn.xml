@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="project.entity.Movies" table="movies" schema="stephen">
+        <id name="movieid" column="MOVIEID"/>
+        <property name="title" column="TITLE"/>
+        <property name="year" column="YEAR"/>
+        <property name="imdbid" column="IMDBID"/>
+    </class>
+    <class name="project.entity.UserInfo" table="USER_INFO" schema="STEPHEN">
+        <id name="userId" column="USER_ID"/>
+        <property name="lastupdate" column="LASTUPDATE"/>
+    </class>
+    <class name="project.entity.UserMovie" table="USER_MOVIE" schema="STEPHEN">
+        <composite-id>
+            <key-property name="userId" column="USER_ID"/>
+            <key-property name="movieid" column="MOVIEID"/>
+        </composite-id>
+        <property name="counts" column="COUNTS"/>
+    </class>
+    <class name="project.entity.UserTweet" table="USER_TWEET" schema="STEPHEN">
+        <id name="entryId" column="ENTRY_ID"/>
+        <property name="userId" column="USER_ID"/>
+        <property name="tweet" column="TWEET"/>
+        <property name="tweetDate" column="TWEET_DATE"/>
+    </class>
+    <class name="project.entity.Genres" table="GENRES" schema="STEPHEN">
+        <composite-id>
+            <key-property name="movieid" column="MOVIEID"/>
+            <key-property name="genre" column="GENRE"/>
+        </composite-id>
+    </class>
+
+
+</hibernate-mapping>
